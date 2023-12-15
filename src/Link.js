@@ -7,8 +7,8 @@ export default function Link(props) {
 
   return (
     <div className={"Link"}>
-      <a href={"%PUBLIC_URL%"+link.url}>
-        <img src={link.icon} alt={link.title} />
+      <a href={link.url}>
+        <img src={process.env.PUBLIC_URL + link.icon} alt={link.title} />
         <p>{link.title}</p>
       </a>
     </div>
