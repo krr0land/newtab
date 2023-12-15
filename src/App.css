@@ -1,0 +1,95 @@
+/*Number of Col*/
+:root {
+  --cols: 6; /* Default value for PCs */
+}
+
+@media only screen and (max-width: 1030px) {
+  /* Tablets */
+  :root {
+    --cols: 4;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  /* Mobile */
+  :root {
+    --cols: 2;
+  }
+}
+
+/*CSS*/
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #181818;
+}
+
+.App{
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.LinkContainer{
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+
+  /*Grid layout*/
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-gap: 5px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-flow: dense;
+}
+
+.Link{
+  /*for debug only debug
+  background-color: aqua;*/
+
+  padding: 10px;
+  overflow: hidden;
+  display: block;
+  height: fit-content;
+  width: fit-content;
+}
+
+.Link img {
+  width: 150px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  transition: 1s ease;
+}
+
+.Link:hover img {
+  transform: scale(1.1);
+}
+
+.Link p {
+  font-size: 16px;
+  margin: 0;
+  padding: 5px 0 5px 0;
+}
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color from the parent */
+}
