@@ -7,7 +7,7 @@ export default function Link(props) {
 
   return (
     <div className={"Link"}>
-      <a href={link.url}>
+      <a href={"%PUBLIC_URL%"+link.url}>
         <img src={link.icon} alt={link.title} />
         <p>{link.title}</p>
       </a>

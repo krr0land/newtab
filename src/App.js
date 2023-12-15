@@ -6,7 +6,7 @@ export default function App() {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    fetch("./links.json")
+    fetch("%PUBLIC_URL%/links.json")
       .then(resp => resp.json())
       .then(data => setLinks(data.links));
   }, []);
