@@ -11,9 +11,9 @@ export default function App() {
       .then(data => setLinks(data.links));
   }, []);
 
-  useEffect(() => {
-    console.log(links);
-  }, [links]);
+  //useEffect(() => {
+  //  console.log(links);
+  //}, [links]);
 
   return (
     <div className={"App"}>
