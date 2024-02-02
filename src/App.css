@@ -3,18 +3,16 @@
   --cols: 6; /* Default value for PCs */
 }
 
-@media only screen and (max-width: 1030px) {
-  /* Tablets */
-  :root {
-    --cols: 4;
-  }
+@media only screen and (max-width: 1245px) {
+  :root { --cols: 4;  }
 }
 
-@media only screen and (max-width: 680px) {
-  /* Mobile */
-  :root {
-    --cols: 2;
-  }
+@media only screen and (max-width: 830px) {
+  :root { --cols: 2;  }
+}
+
+@media only screen and (max-width: 415px) {
+  :root { --cols: 1;  }
 }
 
 /*CSS*/
@@ -67,8 +65,8 @@ body {
 }
 
 .Link img {
-  width: 150px;
-  height: 100px;
+  width: 180px;
+  height: 120px;
   margin: 0;
   padding: 0;
 
