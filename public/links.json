@@ -37,9 +37,9 @@
       "icon": "img/netflix.jpg"
     },
     {
-      "title": "HBO Max",
-      "url": "https://play.hbomax.com/page/urn:hbo:page:home",
-      "icon": "img/hbomax.jpg"
+      "title": "Max",
+      "url": "https://play.max.com/home",
+      "icon": "img/max.jpg"
     },
     {
       "title": "Disney+",

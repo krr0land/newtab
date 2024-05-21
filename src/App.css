@@ -23,7 +23,7 @@ html, body, #root {
 }
 
 body {
-  background-color: #181818;
+  background-color: #191919;
 }
 
 .App{
@@ -48,7 +48,7 @@ body {
   /*Grid layout*/
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
-  grid-gap: 5px;
+  grid-gap: 1px;
   grid-auto-rows: minmax(100px, auto);
   grid-auto-flow: dense;
 }
@@ -57,7 +57,7 @@ body {
   /*for debug only debug
   background-color: aqua;*/
 
-  padding: 10px;
+  padding: 12px;
   overflow: hidden;
   display: block;
   height: fit-content;
@@ -72,19 +72,27 @@ body {
 
   object-fit: cover;
 
+  border-width: 2px;
   border-radius: 10px;
 
-  transition: 1s ease;
+  transition: 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .Link:hover img {
-  transform: scale(1.1);
+  transform: rotate3d(1, 1, 1, -5deg) scale(1.05);
 }
 
 .Link p {
   font-size: 16px;
   margin: 0;
   padding: 5px 0 5px 0;
+
+  transition: 0.0s ease;
+}
+
+.Link:hover p {
+  font-weight: bold;
 }
 
 a {
