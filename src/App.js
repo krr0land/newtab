@@ -1,23 +1,15 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
 import Link from './Link';
+import { links } from "./config";
+import Searchbar from "./Searchbar";
 
 export default function App() {
-  const [links, setLinks] = useState([]);
-
-  useEffect(() => {
-    fetch(process.env.PUBLIC_URL + "/links.json")
-      .then(resp => resp.json())
-      .then(data => setLinks(data.links));
-  }, []);
-
-  //useEffect(() => {
-  //  console.log(links);
-  //}, [links]);
-
   return (
-    <div className={"App"}>
-      <div className={"LinkContainer"}>
+    <div className="App">
+
+      <Searchbar />
+
+      <div className="LinkContainer">
         {links.map((link, index) => (
           <Link key={index} link={link} />
         ))}

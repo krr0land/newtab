@@ -30,10 +30,14 @@ body {
   color: white;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 48px;
 
-  width: 100vw;
+  width: fit-content;
+  margin: auto;
+
   min-height: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -98,4 +102,46 @@ body {
 a {
   text-decoration: none; /* Remove underline */
   color: inherit; /* Inherit text color from the parent */
+}
+
+/* Search bar */
+
+.search-form {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 819px;
+}
+
+.search-logo {
+  width: 48px;
+
+  filter: grayscale(75%);
+  transition: filter 1s ease;
+}
+
+.search-form:focus-within .search-logo {
+  filter: grayscale(0%);
+  transition: filter 1s ease;
+}
+
+.search-input {
+  color: white;
+  flex-grow: 1;
+  padding: 10px 16px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid #5e5e5e;
+  box-sizing: border-box;
+  outline: none;
+  height: 48px;
+  background-color: rgba(25, 25, 25, 0);
+  transition: border-bottom-color 1s ease;
+}
+
+.search-input:focus {
+  border-bottom: 2px solid #cccccc;
+  transition: border-bottom-color 1s ease;
 }
