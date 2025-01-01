@@ -4,19 +4,27 @@
 }
 
 @media only screen and (max-width: 1245px) {
-  :root { --cols: 4;  }
+  :root {
+    --cols: 4;
+  }
 }
 
 @media only screen and (max-width: 830px) {
-  :root { --cols: 2;  }
+  :root {
+    --cols: 2;
+  }
 }
 
 @media only screen and (max-width: 415px) {
-  :root { --cols: 1;  }
+  :root {
+    --cols: 1;
+  }
 }
 
 /*CSS*/
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -26,7 +34,7 @@ body {
   background-color: #191919;
 }
 
-.App{
+.App {
   color: white;
 
   display: flex;
@@ -44,7 +52,7 @@ body {
   overflow-y: hidden;
 }
 
-.LinkContainer{
+.LinkContainer {
   text-align: center;
   width: fit-content;
   height: fit-content;
@@ -57,7 +65,7 @@ body {
   grid-auto-flow: dense;
 }
 
-.Link{
+.Link {
   /*for debug only debug
   background-color: aqua;*/
 
@@ -92,7 +100,7 @@ body {
   margin: 0;
   padding: 5px 0 5px 0;
 
-  transition: 0.0s ease;
+  transition: 0s ease;
 }
 
 .Link:hover p {
