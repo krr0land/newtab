@@ -24,8 +24,3 @@ body,
   margin: 0;
   padding: 0;
 }
-
-body {
-  background-image: url("background.png");
-  background-size: cover;
-}
