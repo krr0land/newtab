@@ -1,13 +1,48 @@
 const colors = [
   [
-    // Red - GX Classic
+    // GX Classic (Red)
     ["0.04 0.18 1.00", "0.03 0.15 1.00", "0.05 0.25 1.00"],
     ["0.00 0.98 1.00", "0.00 0.12 1.00", "0.00 0.31 1.00"],
   ],
   [
-    //
-    [],
-    [],
+    // White Wolf
+    ["0.04 0.20 1.00", "0.04 0.20 1.00", "0.04 0.20 1.00"],
+    ["0.00 0.80 1.00", "0.00 0.80 1.00", "0.00 0.80 1.00"],
+  ],
+  [
+    // Ultra Violet
+    ["0.04 0.17 1.00", "0.04 0.17 1.00", "0.05 0.23 1.00"],
+    ["0.00 0.49 1.00", "0.00 0.27 1.00", "0.00 0.95 1.00"],
+  ],
+  [
+    // Sub Zero (Blue)
+    ["0.04 0.18 1.00", "0.04 0.18 1.00", "0.04 0.22 1.00"],
+    ["0.00 0.27 1.00", "0.00 0.38 1.00", "0.00 0.93 1.00"],
+  ],
+  [
+    // Purple Haze (Lime)
+    ["", "", ""],
+    ["", "", ""],
+  ],
+  [
+    // Vaporwave (Turquoise)
+    ["", "", ""],
+    ["", "", ""],
+  ],
+  [
+    // Coming Soon (Yellow)
+    ["", "", ""],
+    ["", "", ""],
+  ],
+  [
+    // Hackerman (Green)
+    ["", "", ""],
+    ["", "", ""],
+  ],
+  [
+    // Lambda (Orange)
+    ["", "", ""],
+    ["", "", ""],
   ],
 ];
 
@@ -31,8 +66,8 @@ function SvgBg(props: { colors: string[]; path: string; mode: "color" | "normal"
   return (
     <svg className="absolute top-0 left-0 min-h-full min-w-full z-[-100]">
       <defs>
-        <filter id={props.uid} width="120%" height="120%" x="-10%" y="-10%" color-interpolation-filters="sRGB" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
-          <feColorMatrix type="matrix" values=".33 .33 .33 0 0   .33 .33 .33 0 0   .33 .33 .33 0 0   0   0   0  1 0"></feColorMatrix>
+        <filter id={props.uid} width="120%" height="120%" x="-10%" y="-10%" colorInterpolationFilters="sRGB" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
+          <feColorMatrix type="matrix" values=".33 .33 .33 0 0   .33 .33 .33 0 0   .33 .33 .33 0 0   0 0 0 1 0"></feColorMatrix>
           <feComponentTransfer in="colormatrix" result="componentTransfer">
             <feFuncR type="table" tableValues={props.colors[0]}></feFuncR>
             <feFuncG type="table" tableValues={props.colors[1]}></feFuncG>
@@ -42,7 +77,7 @@ function SvgBg(props: { colors: string[]; path: string; mode: "color" | "normal"
           <feBlend in="componentTransfer" in2="SourceGraphic" mode={props.mode} result="blend"></feBlend>
         </filter>
       </defs>
-      <image xlinkHref={props.path} height="100%" width="100%" preserveAspectRatio="none" className={"grayscale-100 filter-[url(#" + props.uid + ")]"} />
+      <image xlinkHref={props.path} height="100%" width="100%" preserveAspectRatio="none" style={{ filter: "grayscale(1) url(#" + props.uid + ")" }} />
     </svg>
   );
 }
