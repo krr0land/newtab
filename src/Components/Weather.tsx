@@ -12,15 +12,6 @@ const degreeTo8Direction = (degree: number): string => {
   return directions[index];
 };
 
-// @ts-expect-error 8 direction is preferred
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const degreeTo16Direction = (degree: number): string => {
-  const directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-  degree = ((degree % 360) + 360) % 360;
-  const index = Math.round(degree / 22.5) % 16;
-  return directions[index];
-};
-
 export default function Weather() {
   const [data, setData] = useState<WeatherApiResponse | null>(null);
   useEffect(() => {
@@ -182,8 +173,8 @@ export default function Weather() {
 
 function Tile(props: { children?: React.ReactNode; title?: string; center?: boolean }) {
   return (
-    <div className="bg-gray-500 w-36 h-36 rounded-lg">
-      {props.title && <p className="text-sm mt-1 ml-2 text-gray-700 font-semibold">{props.title}</p>}
+    <div className="bg-zinc-600 w-36 h-36 rounded-lg">
+      {props.title && <p className="text-sm mt-1 ml-2 text-zinc-800 font-semibold">{props.title}</p>}
       {props.center ? <div className="flex flex-col justify-center items-center gap-1 mt-2">{props.children}</div> : <div className="flex flex-col gap-1 ml-2 mt-2">{props.children}</div>}
     </div>
   );
@@ -191,9 +182,9 @@ function Tile(props: { children?: React.ReactNode; title?: string; center?: bool
 
 function TileWide(props: { children?: React.ReactNode; title?: string }) {
   return (
-    <div className="bg-gray-500 w-[296px] md:w-[448px] h-36 rounded-lg">
-      {props.title && <p className="text-sm mt-1 ml-2 text-gray-700 font-semibold">{props.title}</p>}
-      <div className="flex gap-1 m-3 justify-between overflow-x-auto scrollbar scrollbar-thumb-gray-600 scrollbar-track-transparent">{props.children}</div>
+    <div className="bg-zinc-600 w-[296px] md:w-[448px] h-36 rounded-lg">
+      {props.title && <p className="text-sm mt-1 ml-2 text-zinc-800 font-semibold">{props.title}</p>}
+      <div className="flex gap-1 m-3 justify-between overflow-x-auto scrollbar scrollbar-thumb-zinc-700 scrollbar-track-transparent">{props.children}</div>
     </div>
   );
 }
@@ -202,8 +193,8 @@ function MiniWeatherWidget(props: { wmo_code: number; time: string; temp?: numbe
   // @ts-expect-error TS7053
   const weatherCode = weatherCodeMap[props.wmo_code][dayOrNight(props.is_day)];
   return (
-    <div className="flex flex-col items-center min-w-12 mb-2">
-      <p className="text-sm">{props.time}</p>
+    <div className="flex flex-col items-center min-w-11 mb-2">
+      <p className="text-sm text-nowrap">{props.time}</p>
       <img src={"weather/" + weatherCode.icon} alt={weatherCode.description} className="w-10" />
       {props.temp && <p className="text-sm">{props.temp}°</p>}
       {props.min_temp && props.max_temp && (
