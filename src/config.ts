@@ -16,7 +16,7 @@ export const links: Link[] = [
         icon: "img/facebook.jpg",
     },
     {
-        title: "Twitter / X",
+        title: "Twitter",
         url: "https://twitter.com/home",
         icon: "img/twitter.jpg",
     },
