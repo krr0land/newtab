@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DemoData, getWeather, WeatherApiResponse } from "../Utils/openMeteoApi.ts";
+import { getWeather, WeatherApiResponse } from "../Utils/openMeteoApi.ts";
 import { weatherCodeMap } from "../Utils/weatherCodeMap.ts";
 import Modal from "../Utils/Modal.tsx";
 
@@ -22,12 +22,29 @@ const degreeTo16Direction = (degree: number): string => {
 };
 
 export default function Weather() {
-  const [data, setData] = useState<WeatherApiResponse | null>(DemoData);
-  //useEffect(() => {
-  //  getWeather()
-  //    .then((response) => setData(response))
-  //    .catch((error) => console.error(error));
-  //}, []);
+  const [data, setData] = useState<WeatherApiResponse | null>(null);
+  useEffect(() => {
+    const localData = localStorage.getItem("weather");
+    if (localData) {
+      const obj = JSON.parse(localData) as WeatherApiResponse;
+      // if the data is newer than 1 hour, set it to the state
+      const date = new Date(Date.parse(obj.current.time));
+      const now = new Date();
+      const diff = Math.abs(now.getTime() - date.getTime());
+      const diffHours = Math.floor(diff / (1000 * 60 * 60));
+      if (diffHours < 1) {
+        setData(obj);
+        return;
+      }
+    }
+    // if the data is older than 1 hour or not found, fetch new data
+    getWeather()
+      .then((response) => {
+        setData(response);
+        localStorage.setItem("weather", JSON.stringify(response));
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -95,6 +112,7 @@ export default function Weather() {
             {data.current.apparent_temperature - data.current.temperature_2m > 0 ? <p className="text-md m-1">Feels warmer</p> : <p className="text-md m-1">Feels colder</p>}
           </Tile>
           <Tile title="Precipitation">
+            {/*Todo: maybe change this from current to daily metric*/}
             <p>
               Total: {data.current.precipitation} {data.current_units.precipitation}
             </p>
@@ -184,7 +202,7 @@ function MiniWeatherWidget(props: { wmo_code: number; time: string; temp?: numbe
   // @ts-expect-error TS7053
   const weatherCode = weatherCodeMap[props.wmo_code][dayOrNight(props.is_day)];
   return (
-    <div className="flex flex-col items-center min-w-11 mb-2">
+    <div className="flex flex-col items-center min-w-12 mb-2">
       <p className="text-sm">{props.time}</p>
       <img src={"weather/" + weatherCode.icon} alt={weatherCode.description} className="w-10" />
       {props.temp && <p className="text-sm">{props.temp}°</p>}
