@@ -75,30 +75,38 @@ export default function Weather() {
           </Tile>
           <Tile title="Temperature" center>
             <p className="text-4xl font-bold">
-              {data.current.temperature_2m} {data.current_units.temperature_2m}
+              {data.current.temperature_2m}
+              {data.current_units.temperature_2m}
             </p>
             <p>
-              Min: {data.daily.temperature_2m_min[1]} {data.daily_units.temperature_2m_min}
+              Min: {data.daily.temperature_2m_min[1]}
+              {data.daily_units.temperature_2m_min}
             </p>
             <p>
-              Max: {data.daily.temperature_2m_max[1]} {data.daily_units.temperature_2m_max}
+              Max: {data.daily.temperature_2m_max[1]}
+              {data.daily_units.temperature_2m_max}
             </p>
           </Tile>
           <Tile title="Apparent Temp." center>
             <p className="text-4xl font-bold">
-              {data.current.apparent_temperature} {data.current_units.temperature_2m}
+              {data.current.apparent_temperature}
+              {data.current_units.temperature_2m}
             </p>
             {data.current.apparent_temperature - data.current.temperature_2m > 0 ? <p className="text-md m-1">Feels warmer</p> : <p className="text-md m-1">Feels colder</p>}
           </Tile>
-          <Tile title="Rain">
+          <Tile title="Precipitation">
             <p>
-              Rain: {data.current.rain} {data.current_units.rain}
+              Total: {data.current.precipitation} {data.current_units.precipitation}
             </p>
             <p>
-              Showers: {data.current.showers} {data.current_units.showers}
-            </p>
-            <p>
-              Snow: {data.current.snowfall} {data.current_units.snowfall}
+              {
+                // Out of Snow, Showers and Rain, show the highest value with a label and corresponding unit
+                data.current.snowfall > data.current.rain
+                  ? "Snow: " + data.current.snowfall + " " + data.current_units.snowfall
+                  : data.current.showers > data.current.rain
+                    ? "Showers: " + data.current.showers + " " + data.current_units.showers
+                    : "Rain: " + data.current.rain + " " + data.current_units.rain
+              }
             </p>
             <p>
               Humidity: {data.current.relative_humidity_2m} {data.current_units.relative_humidity_2m}
@@ -112,7 +120,8 @@ export default function Weather() {
               Gust: {data.current.wind_gusts_10m} {data.current_units.wind_gusts_10m}
             </p>
             <p>
-              Dir: {data.current.wind_direction_10m} {data.current_units.wind_direction_10m} ({degreeTo8Direction(data.current.wind_direction_10m)})
+              Dir: {data.current.wind_direction_10m}
+              {data.current_units.wind_direction_10m} ({degreeTo8Direction(data.current.wind_direction_10m)})
             </p>
           </Tile>
           <Tile title="Sunrise / Sunset" center>
@@ -129,7 +138,6 @@ export default function Weather() {
               wmo_code={data.hourly.weather_code[index]}
               time={_idx === 0 ? "Now" : new Date(Date.parse(data.hourly.time[index])).getHours().toString()}
               temp={data.hourly.temperature_2m[index]}
-              temp_unit={data.hourly_units.temperature_2m}
               is_day={data.hourly.is_day[index]}
             />
           ))}
@@ -142,8 +150,8 @@ export default function Weather() {
               key={index}
               wmo_code={data.daily.weather_code[index]}
               time={_idx === 0 ? "Today" : new Date(Date.parse(data.daily.time[index])).toDateString().slice(4, -5)}
-              temp={data.daily.temperature_2m_max[index]}
-              temp_unit={data.daily_units.temperature_2m_max}
+              min_temp={data.daily.temperature_2m_min[index]}
+              max_temp={data.daily.temperature_2m_max[index]}
               is_day={1}
             />
           ))}
@@ -172,16 +180,19 @@ function TileWide(props: { children?: React.ReactNode; title?: string }) {
   );
 }
 
-function MiniWeatherWidget(props: { wmo_code: number; time: string; temp: number; temp_unit: string; is_day: number }) {
+function MiniWeatherWidget(props: { wmo_code: number; time: string; temp?: number; min_temp?: number; max_temp?: number; is_day: number }) {
   // @ts-expect-error TS7053
   const weatherCode = weatherCodeMap[props.wmo_code][dayOrNight(props.is_day)];
   return (
     <div className="flex flex-col items-center min-w-11 mb-2">
       <p className="text-sm">{props.time}</p>
       <img src={"weather/" + weatherCode.icon} alt={weatherCode.description} className="w-10" />
-      <p className="text-sm">
-        {props.temp} {props.temp_unit}
-      </p>
+      {props.temp && <p className="text-sm">{props.temp}°</p>}
+      {props.min_temp && props.max_temp && (
+        <p className="text-sm">
+          {props.min_temp.toFixed()}-{props.max_temp.toFixed()}°
+        </p>
+      )}
     </div>
   );
 }
