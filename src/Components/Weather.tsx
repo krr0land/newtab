@@ -63,7 +63,7 @@ export default function Weather() {
       <div className="md:absolute top-4 right-4 bg-gray-600/30 p-1 pl-2 pr-3 rounded-xl" onClick={() => setIsOpen(true)}>
         <div className="flex items-center">
           <img src={"weather/" + weatherCode.icon} alt={weatherCode.description} className="w-16" />
-          <div className="w-16">
+          <div className="w-18">
             <p className="text-xl font-bold text-center">
               {data.current.temperature_2m} {data.current_units.temperature_2m}{" "}
             </p>
