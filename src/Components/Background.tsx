@@ -49,7 +49,7 @@ const colors = [
 export default function Background() {
   const color = colors[0];
   const theme = "dark";
-  const url = "/bg/" + theme + "/";
+  const url = "bg/" + theme + "/";
 
   return (
     <div className="fixed top-0 left-0 min-h-full min-w-full z-[-100]">
