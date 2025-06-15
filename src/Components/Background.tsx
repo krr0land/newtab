@@ -1,59 +1,13 @@
-const colors = [
-  [
-    // GX Classic (Red)
-    ["0.04 0.18 1.00", "0.03 0.15 1.00", "0.05 0.25 1.00"],
-    ["0.00 0.98 1.00", "0.00 0.12 1.00", "0.00 0.31 1.00"],
-  ],
-  [
-    // White Wolf
-    ["0.04 0.20 1.00", "0.04 0.20 1.00", "0.04 0.20 1.00"],
-    ["0.00 0.80 1.00", "0.00 0.80 1.00", "0.00 0.80 1.00"],
-  ],
-  [
-    // Ultra Violet
-    ["0.04 0.17 1.00", "0.04 0.17 1.00", "0.05 0.23 1.00"],
-    ["0.00 0.49 1.00", "0.00 0.27 1.00", "0.00 0.95 1.00"],
-  ],
-  [
-    // Sub Zero (Blue)
-    ["0.04 0.18 1.00", "0.04 0.18 1.00", "0.04 0.22 1.00"],
-    ["0.00 0.27 1.00", "0.00 0.38 1.00", "0.00 0.93 1.00"],
-  ],
-  [
-    // Purple Haze (Lime)
-    ["0.04 0.21 1.00", "0.03 0.14 1.00", "0.05 0.26 1.00"],
-    ["0.00 0.68 1.00", "0.00 1.00 1.00", "0.00 0.24 1.00"],
-  ],
-  [
-    // Vaporwave (Turquoise)
-    ["0.05 0.24 1.00", "0.03 0.16 1.00", "0.05 0.24 1.00"],
-    ["0.00 0.00 1.00", "0.00 0.90 1.00", "0.00 0.76 1.00"],
-  ],
-  [
-    // Coming Soon (Yellow)
-    ["0.02 0.12 1.00", "0.05 0.26 1.00", "0.05 0.28 1.00"],
-    ["0.00 0.93 1.00", "0.00 0.87 1.00", "0.00 0.00 1.00"],
-  ],
-  [
-    // Hackerman (Green)
-    ["0.04 0.18 1.00", "0.04 0.22 1.00", "0.04 0.19 1.00"],
-    ["0.00 0.00 1.00", "0.00 0.93 1.00", "0.00 0.23 1.00"],
-  ],
-  [
-    // Lambda (Orange)
-    ["0.04 0.18 1.00", "0.04 0.22 1.00", "0.04 0.20 1.00"],
-    ["0.00 1.00 1.00", "0.00 0.60 1.00", "0.00 0.00 1.00"],
-  ],
-  [
-    // Bare
-    ["", "", ""],
-    ["", "", ""],
-  ],
-];
+import { ColorSchemes, Theme } from "../Utils/themes.ts";
 
-export default function Background() {
-  const color = colors[0];
-  const theme = "dark";
+interface BackgroundProps {
+  currentTheme: Theme;
+  currentColorScheme: number;
+}
+
+export default function Background(props: BackgroundProps) {
+  const color = ColorSchemes[props.currentColorScheme].Colors;
+  const theme = props.currentTheme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : props.currentTheme;
   const url = "bg/" + theme + "/";
 
   return (

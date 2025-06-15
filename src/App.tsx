@@ -9,6 +9,7 @@ import { getWeather, WeatherApiResponse } from "./Utils/openMeteoApi.ts";
 import Weather from "./Components/Weather.tsx";
 import NavBar from "./Components/NavBar.tsx";
 import Settings from "./Components/Settings.tsx";
+import { Theme } from "./Utils/themes.ts";
 
 export default function App() {
   const [weatherData, setWeatherData] = useState<WeatherApiResponse | null>(null);
@@ -35,9 +36,12 @@ export default function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  const [theme, setTheme] = useState<Theme>("system");
+  const [colorScheme, setColorScheme] = useState<number>(Math.floor(Math.random() * 10));
+
   return (
     <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto pt-20 box-border overflow-hidden text-white">
-      <Background />
+      <Background currentColorScheme={colorScheme} currentTheme={theme} />
       <NavBar />
 
       <Routes>
@@ -64,18 +68,11 @@ export default function App() {
           path={routes.SETTINGS}
           element={
             <>
-              <Settings />
+              <Settings currentColorScheme={colorScheme} currentTheme={theme} setColorScheme={setColorScheme} setTheme={setTheme} />
             </>
           }
         />
-        <Route
-          path={routes.ANY}
-          element={
-            <>
-              <div>Page not found</div>
-            </>
-          }
-        />
+        <Route path={routes.ANY} element={<div>Page not found</div>} />
       </Routes>
     </div>
   );
