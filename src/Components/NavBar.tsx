@@ -5,9 +5,6 @@ import React from "react";
 
 export default function NavBar() {
   const currentLocation = useLocation().pathname;
-
-  console.log("Current location:", currentLocation);
-
   return (
     <>
       <div className="md:absolute top-2 left-2 py-1 px-2 rounded-xl">
