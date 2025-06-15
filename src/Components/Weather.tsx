@@ -128,8 +128,8 @@ export default function Weather(props: { weatherData: WeatherApiResponse | null 
 
 function Tile(props: { children?: React.ReactNode; title?: string; center?: boolean }) {
   return (
-    <div className="bg-zinc-600 w-36 h-36 rounded-lg">
-      {props.title && <p className="text-sm mt-1 ml-2 text-zinc-800 font-semibold">{props.title}</p>}
+    <div className="bg-zinc-600/30 backdrop-blur-xs w-36 h-36 rounded-lg">
+      {props.title && <p className="text-sm mt-1 ml-2 text-zinc-500 font-semibold">{props.title}</p>}
       {props.center ? <div className="flex flex-col justify-center items-center gap-1 mt-2">{props.children}</div> : <div className="flex flex-col gap-1 ml-2 mt-2">{props.children}</div>}
     </div>
   );
@@ -137,8 +137,8 @@ function Tile(props: { children?: React.ReactNode; title?: string; center?: bool
 
 function TileWide(props: { children?: React.ReactNode; title?: string }) {
   return (
-    <div className="bg-zinc-600 w-[296px] md:w-[448px] h-36 rounded-lg">
-      {props.title && <p className="text-sm mt-1 ml-2 text-zinc-800 font-semibold">{props.title}</p>}
+    <div className="bg-zinc-600/30 backdrop-blur-xs w-[296px] md:w-[448px] h-36 rounded-lg">
+      {props.title && <p className="text-sm mt-1 ml-2 text-zinc-500 font-semibold">{props.title}</p>}
       <div className="flex gap-1 m-3 justify-between overflow-x-auto scrollbar scrollbar-thumb-zinc-700 scrollbar-track-transparent">{props.children}</div>
     </div>
   );
