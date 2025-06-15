@@ -45,9 +45,9 @@ export default function App() {
           path={routes.HOME}
           element={
             <>
+              <WeatherWidget weatherData={weatherData} />
               <Searchbar />
               <LinkContainer />
-              <WeatherWidget weatherData={weatherData} />
             </>
           }
         />

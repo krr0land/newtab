@@ -22,7 +22,7 @@ function NavBarLink(props: { to: string; icon: React.ComponentType<{ className?:
   const isActive = props.current === props.to;
   return (
     <Link to={props.to}>
-      <props.icon className={`${isActive ? "fill-gray-200/80" : "fill-gray-600/50"} w-8 h-8  border-2 border-transparent hover:border-gray-600/30 rounded-lg`} />
+      <props.icon className={`${isActive ? "fill-gray-200/80" : "fill-gray-600/50"} w-8 h-8  border-2 border-transparent hover:border-gray-600/30 rounded-md`} />
     </Link>
   );
 }

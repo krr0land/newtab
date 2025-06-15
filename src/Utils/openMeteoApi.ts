@@ -1,10 +1,32 @@
 // https://open-meteo.com/en/docs
 
-const url =
-  "https://api.open-meteo.com/v1/forecast?latitude=56.157798&longitude=10.207232&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&hourly=temperature_2m,weather_code,is_day&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,snowfall,showers,rain,precipitation,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_gusts_10m,wind_direction_10m,wind_speed_10m&timezone=auto&past_days=1&forecast_days=14";
+//const url = "https://api.open-meteo.com/v1/forecast?latitude=56.157798&longitude=10.207232&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&hourly=temperature_2m,weather_code,is_day&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,snowfall,showers,rain,precipitation,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_gusts_10m,wind_direction_10m,wind_speed_10m&timezone=auto&past_days=1&forecast_days=14";
+
+interface LatLong {
+  latitude: number;
+  longitude: number;
+}
+
+const aarhusLocation: LatLong = {
+  latitude: 56.157798,
+  longitude: 10.207232,
+};
+
+async function getLocation(): Promise<LatLong | undefined> {
+  return new Promise((resolve) => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve(pos.coords),
+      () => resolve(undefined)
+    );
+  });
+}
+
+const getUrl = (latitude: number, longitude: number): string =>
+  `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&hourly=temperature_2m,weather_code,is_day&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,snowfall,showers,rain,precipitation,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_gusts_10m,wind_direction_10m,wind_speed_10m&timezone=auto&past_days=1&forecast_days=14`;
 
 export async function getWeather(): Promise<WeatherApiResponse> {
-  const response = await fetch(url);
+  const position = (await getLocation()) || aarhusLocation;
+  const response = await fetch(getUrl(position.latitude, position.longitude));
   return await response.json();
 }
 
