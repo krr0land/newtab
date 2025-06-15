@@ -52,7 +52,7 @@ export default function Background() {
   const url = "bg/" + theme + "/";
 
   return (
-    <div className="fixed top-0 left-0 min-h-full min-w-full z-[-100]">
+    <div className="fixed top-0 left-0 min-h-screen min-w-screen z-[-100]">
       <svg className="absolute top-0 left-0 min-h-full min-w-full z-[-100]">
         <image xlinkHref={url + "1.webp"} height="100%" width="100%" preserveAspectRatio="none" />
       </svg>
