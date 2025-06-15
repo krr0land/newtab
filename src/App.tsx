@@ -36,7 +36,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center gap-12 w-fit m-auto pt-20 box-border overflow-hidden text-white">
+    <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto pt-20 box-border overflow-hidden text-white">
       <Background />
       <NavBar />
 
@@ -47,6 +47,7 @@ export default function App() {
             <>
               <WeatherWidget weatherData={weatherData} />
               <Searchbar />
+              <div className="h-8" />
               <LinkContainer />
             </>
           }
