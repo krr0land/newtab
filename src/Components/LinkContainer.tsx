@@ -6,7 +6,7 @@ export default function LinkContainer() {
     <TabGroup className="flex flex-col justify-center items-center w-fit m-auto">
       <TabList>
         {linkGroups.map((linkGroup) => (
-          <Tab className="rounded-xl first:ml-1 mr-2 px-3 py-1 text-sm/6 font-semibold text-white focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-white/10 data-selected:bg-white/15 ">
+          <Tab className="rounded-xl first:ml-1 mr-2 px-3 py-1 text-sm/6 font-semibold text-white focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-800/45 data-selected:bg-gray-800/70 ">
             {linkGroup.title}
           </Tab>
         ))}
