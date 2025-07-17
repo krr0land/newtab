@@ -32,7 +32,13 @@ const chatgpt: Link = {
 const youtube: Link = {
   title: "YouTube",
   url: "https://www.youtube.com/feed/subscriptions",
-  icon: "img/youtube.jpg",
+  icon: "img/youtube_2.jpg",
+};
+
+const youtubeMusic: Link = {
+  title: "YouTube Music",
+  url: "https://music.youtube.com/",
+  icon: "img/ytmusic_2.jpg",
 };
 
 const gmail: Link = {
@@ -44,73 +50,67 @@ const gmail: Link = {
 const gemini: Link = {
   title: "Gemini",
   url: "https://gemini.google.com/app",
-  icon: "img/404.jpg",
-};
-
-const youtubeMusic: Link = {
-  title: "YouTube Music",
-  url: "https://music.youtube.com/",
-  icon: "img/ytmusic.jpg",
+  icon: "img/gemini.jpg",
 };
 
 const googleSearch: Link = {
   title: "Search",
   url: "https://www.google.com/",
-  icon: "img/404.jpg",
+  icon: "img/google.jpg",
 };
 
 const googleMaps: Link = {
   title: "Maps",
   url: "https://www.google.com/maps/",
-  icon: "img/404.jpg",
+  icon: "img/gmaps.jpg",
 };
 
 const googleDrive: Link = {
   title: "Drive",
   url: "https://drive.google.com/drive/home",
-  icon: "img/404.jpg",
+  icon: "img/gdrive.jpg",
 };
 
 const googleCalendar: Link = {
   title: "Calendar",
   url: "https://calendar.google.com/calendar/u/0/r/month",
-  icon: "img/404.jpg",
+  icon: "img/gcalendar.jpg",
 };
 
 const googleKeep: Link = {
   title: "Keep",
   url: "https://keep.google.com/",
-  icon: "img/404.jpg",
+  icon: "img/gkeep.jpg",
 };
 
 const googleTranslate: Link = {
   title: "Translate",
   url: "https://translate.google.com/",
-  icon: "img/404.jpg",
+  icon: "img/gtranslate.jpg",
 };
 
 const googleTravel: Link = {
   title: "Travel",
   url: "https://www.google.com/travel/",
-  icon: "img/404.jpg",
+  icon: "img/gtravel.jpg",
 };
 
 const googleDocs: Link = {
   title: "Docs",
   url: "https://docs.google.com/document/u/0/",
-  icon: "img/404.jpg",
+  icon: "img/gdocs.jpg",
 };
 
 const googleSheets: Link = {
   title: "Sheets",
   url: "https://docs.google.com/spreadsheets/u/0/",
-  icon: "img/404.jpg",
+  icon: "img/gsheets.jpg",
 };
 
 const googleSlides: Link = {
   title: "Slides",
   url: "https://docs.google.com/presentation/u/0/",
-  icon: "img/404.jpg",
+  icon: "img/gslides.jpg",
 };
 
 // Microsoft
