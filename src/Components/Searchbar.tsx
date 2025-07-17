@@ -10,9 +10,10 @@ export default function Searchbar() {
     }
   };
 
+  // noinspection HtmlUnknownTarget
   return (
     <form onSubmit={handleSearch} className="md:pt-20 text-center flex flex-row items-center gap-4 w-full max-w-4xl group">
-      <img src="/g_logo.png" alt="Google Logo" className="w-[48px] grayscale-[0.75] duration-1000 ease-in-out group-focus-within:grayscale-0" />
+      <img src="g_logo.png" alt="Google Logo" className="w-[48px] grayscale-[0.75] duration-1000 ease-in-out group-focus-within:grayscale-0" />
       <input
         type="text"
         placeholder="Search Google..."

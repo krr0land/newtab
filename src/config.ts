@@ -117,61 +117,61 @@ const googleSlides: Link = {
 const msnWeather: Link = {
   title: "MSN Weather",
   url: "https://www.msn.com/hu-hu/idojaras",
-  icon: "img/404.jpg",
+  icon: "img/msweather.jpg",
 };
 
 const microsoftAccount: Link = {
   title: "Account",
   url: "https://account.microsoft.com/",
-  icon: "img/404.jpg",
+  icon: "img/microsoft.jpg",
 };
 
 const microsoftToDo: Link = {
   title: "To Do",
   url: "https://to-do.live.com/tasks/inbox",
-  icon: "img/404.jpg",
+  icon: "img/mstodo.jpg",
 };
 
 const microsoftCopilot: Link = {
   title: "Copilot",
   url: "https://m365.cloud.microsoft/chat",
-  icon: "img/404.jpg",
+  icon: "img/mscopilot.jpg",
 };
 
 const outlook: Link = {
   title: "Outlook",
   url: "https://outlook.live.com/mail/0/",
-  icon: "img/404.jpg",
+  icon: "img/msoutlook.jpg",
 };
 
 const oneDrive: Link = {
   title: "OneDrive",
   url: "https://onedrive.live.com/?view=0",
-  icon: "img/404.jpg",
+  icon: "img/msonedrive.jpg",
 };
 
 const word: Link = {
   title: "Word",
   url: "https://word.cloud.microsoft/",
-  icon: "img/404.jpg",
+  icon: "img/msword.jpg",
 };
 
 const excel: Link = {
   title: "Excel",
   url: "https://excel.cloud.microsoft/",
-  icon: "img/404.jpg",
+  icon: "img/msexcel.jpg",
 };
 
 const powerPoint: Link = {
   title: "PowerPoint",
   url: "https://powerpoint.cloud.microsoft/",
-  icon: "img/404.jpg",
+  icon: "img/mspowerpoint.jpg",
 };
 
 const oneNote: Link = {
   title: "OneNote",
   url: "https://www.onenote.com/notebooks",
-  icon: "img/404.jpg",
+  icon: "img/msonenote.jpg",
 };
 
 // Social
@@ -277,7 +277,7 @@ export const linkGroups: LinkGroup[] = [
   },
   {
     title: "Microsoft",
-    links: [msnWeather, microsoftAccount, microsoftToDo, microsoftCopilot, outlook, oneDrive, word, excel, powerPoint, oneNote],
+    links: [msnWeather, microsoftAccount, microsoftToDo, microsoftCopilot, oneDrive, outlook, word, excel, powerPoint, oneNote],
   },
   {
     title: "Social",

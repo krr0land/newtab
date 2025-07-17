@@ -1,4 +1,4 @@
-import { HomeIcon, SettingsIcon, WeatherIcon } from "../Utils/Icons.tsx";
+import { HomeIcon, SettingsIcon, WeatherIcon, CodeIcon } from "../Utils/Icons.tsx";
 import { Link, useLocation } from "react-router";
 import { routes } from "../routes.ts";
 import React from "react";
@@ -11,6 +11,7 @@ export default function NavBar() {
         <div className="flex items-center gap-2">
           <NavBarLink to={routes.HOME} icon={HomeIcon} current={currentLocation} />
           <NavBarLink to={routes.WEATHER} icon={WeatherIcon} current={currentLocation} />
+          <NavBarLink to={routes.TECH} icon={CodeIcon} current={currentLocation} />
           <NavBarLink to={routes.SETTINGS} icon={SettingsIcon} current={currentLocation} />
         </div>
       </div>
