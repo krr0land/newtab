@@ -10,6 +10,7 @@ import Weather from "./Components/Weather.tsx";
 import NavBar from "./Components/NavBar.tsx";
 import Settings from "./Components/Settings.tsx";
 import { Theme } from "./Utils/themes.ts";
+import TechConfig from "./Components/TechConfig.tsx";
 
 export default function App() {
   const [weatherData, setWeatherData] = useState<WeatherApiResponse | null>(null);
@@ -69,6 +70,14 @@ export default function App() {
           element={
             <>
               <Settings currentColorScheme={colorScheme} currentTheme={theme} setColorScheme={setColorScheme} setTheme={setTheme} />
+            </>
+          }
+        />
+        <Route
+          path={routes.TECH}
+          element={
+            <>
+              <TechConfig />
             </>
           }
         />
