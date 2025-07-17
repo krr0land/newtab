@@ -33,7 +33,7 @@ export default function Weather(props: { weatherData: WeatherApiResponse | null 
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <div className="md:pt-20 grid grid-cols-2 md:grid-cols-3 gap-2">
         {/*Current weather*/}
         <Tile title="Current weather" center>
           <img src={"weather/" + weatherCode.icon} alt="" className="w-24 mt-[-20px]" />

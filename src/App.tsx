@@ -40,7 +40,7 @@ export default function App() {
   const [colorScheme, setColorScheme] = useState<number>(Math.floor(Math.random() * 10));
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto pt-20 box-border overflow-hidden text-white">
+    <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto box-border overflow-hidden text-white">
       <Background currentColorScheme={colorScheme} currentTheme={theme} />
       <NavBar />
 

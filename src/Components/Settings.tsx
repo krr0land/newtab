@@ -13,7 +13,7 @@ interface SettingsProps {
 export default function Settings(props: SettingsProps) {
   return (
     <>
-      <h1 className="text-2xl font-bold">Set the theme*</h1>
+      <h1 className="md:pt-20 text-2xl font-bold">Set the theme*</h1>
       <p className="text-sm text-gray-400">*Currently only changes the background color.</p>
       <div className="flex gap-2">
         {Themes.map((theme) => (
