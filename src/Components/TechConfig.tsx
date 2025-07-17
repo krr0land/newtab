@@ -14,7 +14,7 @@ export default function TechConfig() {
                 <td colSpan={3}>{group.title}</td>
               </tr>
               {group.entries.map((entry) => (
-                <tr className="border-y-[1px]" key={entry.product}>
+                <tr className="border-y-[1px] border-gray-500" key={entry.product}>
                   <td className="p-2">{entry.category}</td>
                   <td className="p-2">
                     {entry.url ? (
