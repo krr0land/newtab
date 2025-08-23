@@ -1,19 +1,21 @@
-import Searchbar from "./Components/Searchbar";
-import LinkContainer from "./Components/LinkContainer.tsx";
-import Background from "./Components/Background.tsx";
-import WeatherWidget from "./Components/WeatherWidget.tsx";
 import { Route, Routes } from "react-router";
 import { routes } from "./routes.ts";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useAtom } from "jotai";
 import { getWeather, WeatherApiResponse } from "./Utils/openMeteoApi.ts";
 import Weather from "./Components/Weather.tsx";
 import NavBar from "./Components/NavBar.tsx";
 import Settings from "./Components/Settings.tsx";
-import { Theme } from "./Utils/themes.ts";
 import TechConfig from "./Components/TechConfig.tsx";
+import Searchbar from "./Components/Searchbar";
+import LinkContainer from "./Components/LinkContainer.tsx";
+import Background from "./Components/Background.tsx";
+import WeatherWidget from "./Components/WeatherWidget.tsx";
+import { weatherAtom } from "./atoms.ts";
 
 export default function App() {
-  const [weatherData, setWeatherData] = useState<WeatherApiResponse | null>(null);
+  const [weatherData, setWeatherData] = useAtom(weatherAtom);
+
   useEffect(() => {
     const localData = localStorage.getItem("weather");
     if (localData) {
@@ -37,12 +39,9 @@ export default function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  const [theme, setTheme] = useState<Theme>("system");
-  const [colorScheme, setColorScheme] = useState<number>(Math.floor(Math.random() * 10));
-
   return (
     <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto box-border overflow-hidden text-white">
-      <Background currentColorScheme={colorScheme} currentTheme={theme} />
+      <Background />
       <NavBar />
 
       <Routes>
@@ -69,7 +68,7 @@ export default function App() {
           path={routes.SETTINGS}
           element={
             <>
-              <Settings currentColorScheme={colorScheme} currentTheme={theme} setColorScheme={setColorScheme} setTheme={setTheme} />
+              <Settings />
             </>
           }
         />

@@ -1,13 +1,13 @@
-import { ColorSchemes, Theme } from "../Utils/themes.ts";
+import { ColorSchemes } from "../Utils/themes.ts";
+import { colorSchemeAtom, themeAtom } from "../atoms.ts";
+import { useAtom } from "jotai";
 
-interface BackgroundProps {
-  currentTheme: Theme;
-  currentColorScheme: number;
-}
+export default function Background() {
+  const [currentColorScheme] = useAtom(colorSchemeAtom);
+  const [currentTheme] = useAtom(themeAtom);
 
-export default function Background(props: BackgroundProps) {
-  const color = ColorSchemes[props.currentColorScheme].Colors;
-  const theme = props.currentTheme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : props.currentTheme;
+  const color = ColorSchemes[currentColorScheme].Colors;
+  const theme = currentTheme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : currentTheme;
   const url = "bg/" + theme + "/";
 
   return (

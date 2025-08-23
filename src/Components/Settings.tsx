@@ -1,23 +1,19 @@
 import React from "react";
-import { ColorSchemes, Theme, Themes } from "../Utils/themes.ts";
+import { ColorSchemes, Themes } from "../Utils/themes.ts";
+import { useAtom } from "jotai/index";
+import { colorSchemeAtom, themeAtom } from "../atoms.ts";
 
-// Mock functions to simulate setting theme and color scheme
-// Will be replaced with a store
-interface SettingsProps {
-  setTheme: (theme: Theme) => void;
-  setColorScheme: (colorScheme: number) => void;
-  currentTheme: Theme;
-  currentColorScheme: number;
-}
+export default function Settings() {
+  const [currentColorScheme, setColorScheme] = useAtom(colorSchemeAtom);
+  const [currentTheme, setTheme] = useAtom(themeAtom);
 
-export default function Settings(props: SettingsProps) {
   return (
     <>
       <h1 className="md:pt-20 text-2xl font-bold">Set the theme*</h1>
       <p className="text-sm text-gray-400">*Currently only changes the background color.</p>
       <div className="flex gap-2">
         {Themes.map((theme) => (
-          <Button key={theme} onClick={() => props.setTheme(theme)} highlight={props.currentTheme === theme}>
+          <Button key={theme} onClick={() => setTheme(theme)} highlight={currentTheme === theme}>
             {theme.charAt(0).toUpperCase() + theme.slice(1)}
           </Button>
         ))}
@@ -28,7 +24,7 @@ export default function Settings(props: SettingsProps) {
       <h1 className="text-2xl font-bold">Set the color scheme</h1>
       <div className="grid grid-cols-2 gap-2">
         {ColorSchemes.map((colorScheme, idx) => (
-          <Button key={idx} onClick={() => props.setColorScheme(idx)} highlight={props.currentColorScheme === idx}>
+          <Button key={idx} onClick={() => setColorScheme(idx)} highlight={currentColorScheme === idx}>
             {colorScheme.Name}
           </Button>
         ))}
