@@ -35,8 +35,8 @@ export default function Settings() {
 
 function Button(props: { children?: React.ReactNode; onClick?: () => void; highlight?: boolean }) {
   return (
-    <button className="bg-gray-800/70 px-4 py-1 rounded hover:bg-gray-700/70 transition-colors min-w-36" onClick={props.onClick}>
-      {props.highlight ? <div className="font-extrabold text-gray-100 dark:text-gray-300">{props.children}</div> : <div className="text-gray-100 dark:text-gray-300">{props.children}</div>}
+    <button className="bg-gray-400/60 dark:bg-gray-800/70 px-4 py-1 rounded-xl hover:bg-gray-500/60 dark:hover:bg-gray-700/70 transition-colors min-w-36" onClick={props.onClick}>
+      {props.highlight ? <div className="font-extrabold dark:text-gray-300">{props.children}</div> : <div className="dark:text-gray-300">{props.children}</div>}
     </button>
   );
 }
