@@ -19,7 +19,7 @@ export default function Searchbar() {
         placeholder="Search Google..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="flex-grow py-[10px] px-[16px] border-0 rounded-none box-border border-b-2 border-b-neutral-500 outline-none h-12 bg-transparent text-xl placeholder-neutral-500 duration-1000 ease-in-out group-focus-within:border-b-neutral-300"
+        className="flex-grow py-[10px] px-[16px] border-0 rounded-none box-border border-b-2 border-b-neutral-400 dark:border-b-neutral-500 outline-none h-12 bg-transparent text-xl placeholder-neutral-400 dark:placeholder-neutral-500 duration-1000 ease-in-out group-focus-within:border-b-neutral-500 group-focus-within:dark:border-b-neutral-300"
       />
     </form>
   );

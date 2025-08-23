@@ -1,14 +1,14 @@
 import { ColorSchemes } from "../Utils/themes.ts";
 import { colorSchemeAtom, themeAtom } from "../atoms.ts";
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
 
 export default function Background() {
-  const [currentColorScheme] = useAtom(colorSchemeAtom);
-  const [currentTheme] = useAtom(themeAtom);
+  const currentColorScheme = useAtomValue(colorSchemeAtom);
+  const currentTheme = useAtomValue(themeAtom);
 
   const color = ColorSchemes[currentColorScheme].Colors;
-  const theme = currentTheme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : currentTheme;
-  const url = "bg/" + theme + "/";
+  //const theme = currentTheme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : currentTheme;
+  const url = "bg/" + currentTheme + "/";
 
   return (
     <div className="fixed top-0 left-0 min-h-screen min-w-screen z-[-100]">

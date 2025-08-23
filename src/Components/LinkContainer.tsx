@@ -6,7 +6,11 @@ export default function LinkContainer() {
     <TabGroup className="flex flex-col justify-center items-center w-fit m-auto">
       <TabList className="flex flex-col sm:flex-row items-center">
         {linkGroups.map((linkGroup) => (
-          <Tab className="rounded-xl first:ml-1 mr-2 px-3 py-1 text-sm/6 font-semibold text-white focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-800/45 data-selected:bg-gray-800/70 ">
+          <Tab
+            className="rounded-xl first:ml-1 mr-2 px-3 py-1 text-sm/6 font-semibold focus:not-data-focus:outline-none data-focus:outline
+            data-focus:outline-white data-hover:bg-gray-300/70 data-selected:bg-gray-400/60
+            dark:text-white dark:data-focus:outline-white dark:data-hover:bg-gray-800/45 dark:data-selected:bg-gray-800/70"
+          >
             {linkGroup.title}
           </Tab>
         ))}
@@ -38,7 +42,7 @@ function LinkElement(props: { link: Link }) {
   return (
     <a href={link.url} className="p-3 overflow-hidden block size-fit group">
       <img src={link.icon} alt={link.title} className="w-[180px] h-[120px] m-0 p-0 object-cover border-0 rounded-xl transition-all duration-300 ease-in-out transform-style-3d group-hover:scale-105 group-hover:rotate-[-4deg]" />
-      <p className="m-0 px-0 py-1.5 group-hover:font-bold">{link.title}</p>
+      <p className="m-0 px-0 py-1.5 font-medium dark:font-normal group-hover:font-bold">{link.title}</p>
     </a>
   );
 }

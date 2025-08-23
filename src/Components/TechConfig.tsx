@@ -19,7 +19,7 @@ export default function TechConfig() {
                   <td className="p-2">
                     {entry.url ? (
                       <a href={entry.url} target="_blank" rel="noopener noreferrer">
-                        <LinkIcon className="fill-gray-200/80" />
+                        <LinkIcon className="fill-gray-600/80 dark:fill-gray-200/80" />
                       </a>
                     ) : (
                       <div />

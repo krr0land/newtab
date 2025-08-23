@@ -1,5 +1,6 @@
 import { weatherCodeMap } from "../Utils/weatherCodeMap.ts";
-import { WeatherApiResponse } from "../Utils/openMeteoApi.ts";
+import { useAtomValue } from "jotai/index";
+import { weatherAtom } from "../atoms.ts";
 
 const dayOrNight = (isDay: number) => (isDay === 0 ? "night" : "day");
 
@@ -10,8 +11,8 @@ const degreeTo8Direction = (degree: number): string => {
   return directions[index];
 };
 
-export default function Weather(props: { weatherData: WeatherApiResponse | null }) {
-  const data = props.weatherData;
+export default function Weather() {
+  const data = useAtomValue(weatherAtom);
   if (!data) return <div>Weather data not found.</div>;
 
   const code = data.current.weather_code.toString();
@@ -128,8 +129,8 @@ export default function Weather(props: { weatherData: WeatherApiResponse | null 
 
 function Tile(props: { children?: React.ReactNode; title?: string; center?: boolean }) {
   return (
-    <div className="bg-gray-600/30 backdrop-blur-xs w-36 h-36 rounded-lg">
-      {props.title && <p className="text-sm mt-1 ml-2 text-gray-400 font-semibold">{props.title}</p>}
+    <div className="bg-gray-400/30 dark:bg-gray-600/30 backdrop-blur-xs w-36 h-36 rounded-lg">
+      {props.title && <p className="text-sm mt-1 ml-2 text-gray-600 dark:text-gray-400 font-semibold">{props.title}</p>}
       {props.center ? <div className="flex flex-col justify-center items-center gap-1 mt-2">{props.children}</div> : <div className="flex flex-col gap-1 ml-2 mt-2">{props.children}</div>}
     </div>
   );
@@ -137,9 +138,9 @@ function Tile(props: { children?: React.ReactNode; title?: string; center?: bool
 
 function TileWide(props: { children?: React.ReactNode; title?: string }) {
   return (
-    <div className="bg-gray-600/30 backdrop-blur-xs w-[296px] md:w-[448px] h-36 rounded-lg">
-      {props.title && <p className="text-sm mt-1 ml-2 text-gray-400 font-semibold">{props.title}</p>}
-      <div className="flex gap-1 m-3 justify-between overflow-x-auto scrollbar scrollbar-thumb-gray-600 scrollbar-track-transparent">{props.children}</div>
+    <div className="bg-gray-400/30 dark:bg-gray-600/30 backdrop-blur-xs w-[296px] md:w-[448px] h-36 rounded-lg">
+      {props.title && <p className="text-sm mt-1 ml-2 text-gray-600 dark:text-gray-400 font-semibold">{props.title}</p>}
+      <div className="flex gap-1 m-3 justify-between overflow-x-auto scrollbar scrollbar-thumb-gray-500 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">{props.children}</div>
     </div>
   );
 }

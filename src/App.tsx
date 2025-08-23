@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import { routes } from "./routes.ts";
 import { useEffect } from "react";
-import { useAtom } from "jotai";
+import { useSetAtom, useAtomValue } from "jotai";
 import { getWeather, WeatherApiResponse } from "./Utils/openMeteoApi.ts";
 import Weather from "./Components/Weather.tsx";
 import NavBar from "./Components/NavBar.tsx";
@@ -11,10 +11,11 @@ import Searchbar from "./Components/Searchbar";
 import LinkContainer from "./Components/LinkContainer.tsx";
 import Background from "./Components/Background.tsx";
 import WeatherWidget from "./Components/WeatherWidget.tsx";
-import { weatherAtom } from "./atoms.ts";
+import { themeAtom, weatherAtom } from "./atoms.ts";
 
 export default function App() {
-  const [weatherData, setWeatherData] = useAtom(weatherAtom);
+  const setWeatherData = useSetAtom(weatherAtom);
+  const currentTheme = useAtomValue(themeAtom);
 
   useEffect(() => {
     const localData = localStorage.getItem("weather");
@@ -39,8 +40,16 @@ export default function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  useEffect(() => {
+    document.documentElement.className = currentTheme;
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.className = currentTheme;
+  }, [currentTheme]);
+
   return (
-    <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto box-border overflow-hidden text-white">
+    <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto box-border overflow-hidden text-zinc-700 dark:text-white">
       <Background />
       <NavBar />
 
@@ -49,7 +58,7 @@ export default function App() {
           path={routes.HOME}
           element={
             <>
-              <WeatherWidget weatherData={weatherData} />
+              <WeatherWidget />
               <Searchbar />
               <div className="h-8" />
               <LinkContainer />
@@ -60,7 +69,7 @@ export default function App() {
           path={routes.WEATHER}
           element={
             <>
-              <Weather weatherData={weatherData} />
+              <Weather />
             </>
           }
         />

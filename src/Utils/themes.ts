@@ -1,11 +1,11 @@
-export type Theme = "light" | "dark" | "system";
+export type Theme = "light" | "dark";
 
 export interface ColorScheme {
   Name: string;
   Colors: string[][];
 }
 
-export const Themes: Theme[] = ["dark", "light", "system"];
+export const Themes: Theme[] = ["dark", "light"];
 
 export const ColorSchemes: ColorScheme[] = [
   {

@@ -1,12 +1,13 @@
 import { weatherCodeMap } from "../Utils/weatherCodeMap.ts";
-import { WeatherApiResponse } from "../Utils/openMeteoApi.ts";
 import { routes } from "../routes.ts";
 import { Link } from "react-router";
+import { useAtomValue } from "jotai/index";
+import { weatherAtom } from "../atoms.ts";
 
 const dayOrNight = (isDay: number) => (isDay === 0 ? "night" : "day");
 
-export default function WeatherWidget(props: { weatherData: WeatherApiResponse | null }) {
-  const data = props.weatherData;
+export default function WeatherWidget() {
+  const data = useAtomValue(weatherAtom);
   if (!data) return <div className="hidden" />;
 
   const code = data.current.weather_code.toString();
@@ -17,7 +18,7 @@ export default function WeatherWidget(props: { weatherData: WeatherApiResponse |
   dateCutoff.setMinutes(0);
 
   return (
-    <Link to={routes.WEATHER} className="md:absolute top-4 right-4 bg-gray-600/30 p-1 pl-2 pr-3 rounded-xl">
+    <Link to={routes.WEATHER} className="md:absolute top-4 right-4 bg-gray-400/30 dark:bg-gray-600/30 p-1 pl-2 pr-3 rounded-xl">
       <div className="flex items-center">
         <img src={"weather/" + weatherCode.icon} alt={weatherCode.description} className="w-16" />
         <div className="w-18">
