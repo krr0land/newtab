@@ -1,11 +1,13 @@
 import React from "react";
 import { ColorSchemes, Themes } from "../Utils/themes.ts";
 import { useAtom } from "jotai/index";
-import { colorSchemeAtom, themeAtom } from "../atoms.ts";
+import { colorSchemeAtom, randomPhotoAtom, themeAtom } from "../atoms.ts";
+import { getRandomPhoto } from "../Utils/unsplashApi.ts";
 
 export default function Settings() {
   const [currentColorScheme, setColorScheme] = useAtom(colorSchemeAtom);
   const [currentTheme, setTheme] = useAtom(themeAtom);
+  const [randomPhoto, setRandomPhoto] = useAtom(randomPhotoAtom);
 
   return (
     <>
@@ -18,17 +20,45 @@ export default function Settings() {
         ))}
       </div>
 
-      <div className="h-4" />
+      {!randomPhoto && (
+        // Only show the color scheme options if there is no random photo, aka the GX Background is used
+        <>
+          <div className="h-4" />
 
-      <h1 className="text-2xl font-bold">Set the color scheme*</h1>
-      <p className="text-sm text-gray-600 dark:text-gray-300">*Only applicable for the GX Background.</p>
-      <div className="grid grid-cols-2 gap-2">
-        {ColorSchemes.map((colorScheme, idx) => (
-          <Button key={idx} onClick={() => setColorScheme(idx)} highlight={currentColorScheme === idx}>
-            {colorScheme.Name}
-          </Button>
-        ))}
-      </div>
+          <h1 className="text-2xl font-bold">Set the color scheme*</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-300">*Only applicable for the GX Background.</p>
+          <div className="grid grid-cols-2 gap-2">
+            {ColorSchemes.map((colorScheme, idx) => (
+              <Button key={idx} onClick={() => setColorScheme(idx)} highlight={currentColorScheme === idx}>
+                {colorScheme.Name}
+              </Button>
+            ))}
+          </div>
+        </>
+      )}
+
+      {randomPhoto && (
+        // Only show the random photo options if there is a random photo
+        <>
+          <div className="h-4" />
+
+          <h1 className="text-2xl font-bold">Random Image</h1>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => {
+                getRandomPhoto()
+                  .then((response) => {
+                    setRandomPhoto(response);
+                    localStorage.setItem("photo", JSON.stringify(response));
+                  })
+                  .catch((error) => console.error(error));
+              }}
+            >
+              Next Image
+            </Button>
+          </div>
+        </>
+      )}
     </>
   );
 }
