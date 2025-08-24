@@ -7,7 +7,7 @@ export default function NavBar() {
   const currentLocation = useLocation().pathname;
   return (
     <>
-      <div className="md:absolute top-2 left-2 py-1 px-2 rounded-xl">
+      <div className="bg-gray-400/30 dark:bg-gray-600/30 md:absolute top-2 left-2 py-1 px-1 rounded-xl backdrop-blur-xs">
         <div className="flex items-center gap-2">
           <NavBarLink to={routes.HOME} icon={HomeIcon} current={currentLocation} />
           <NavBarLink to={routes.WEATHER} icon={WeatherIcon} current={currentLocation} />
