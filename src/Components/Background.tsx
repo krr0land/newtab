@@ -1,8 +1,47 @@
 import { ColorSchemes } from "../Utils/themes.ts";
-import { colorSchemeAtom, themeAtom } from "../atoms.ts";
+import { colorSchemeAtom, randomPhotoAtom, themeAtom } from "../atoms.ts";
 import { useAtomValue } from "jotai";
+import { useEffect, useState } from "react";
+import { PhotoApiResponse } from "../Utils/unsplashApi.ts";
 
 export default function Background() {
+  const photo = useAtomValue(randomPhotoAtom);
+  if (!photo) return <GxBackground />;
+  else return <UnsplashBackground photo={photo} />;
+}
+
+function UnsplashBackground(props: { photo: PhotoApiResponse }) {
+  const { photo } = props;
+
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const url = photo.urls.raw + `&w=${windowSize.width}&h=${windowSize.height}&crop=edges&fit=crop`;
+
+  return (
+    <div className="fixed top-0 left-0 min-h-screen min-w-screen z-[-100]">
+      <img src={url} alt={photo.alt_description || ""} />
+    </div>
+  );
+}
+
+function GxBackground() {
   const currentColorScheme = useAtomValue(colorSchemeAtom);
   const currentTheme = useAtomValue(themeAtom);
 

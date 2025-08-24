@@ -10,6 +10,7 @@ export default function LinkContainer() {
             className="rounded-xl first:ml-1 mr-2 px-3 py-1 text-sm/6 font-semibold focus:not-data-focus:outline-none data-focus:outline transition-colors
             data-focus:outline-white data-hover:bg-gray-300/70 data-selected:bg-gray-400/60
             dark:text-white dark:data-focus:outline-white dark:data-hover:bg-gray-800/45 dark:data-selected:bg-gray-800/70"
+            key={linkGroup.title}
           >
             {linkGroup.title}
           </Tab>
@@ -17,7 +18,7 @@ export default function LinkContainer() {
       </TabList>
       <TabPanels>
         {linkGroups.map((linkGroup) => (
-          <TabPanel>
+          <TabPanel key={linkGroup.title}>
             <LinkGrid links={linkGroup.links} />
           </TabPanel>
         ))}
