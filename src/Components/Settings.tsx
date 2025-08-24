@@ -10,7 +10,6 @@ export default function Settings() {
   return (
     <>
       <h1 className="md:pt-20 text-2xl font-bold">Set the theme</h1>
-      {/*<p className="text-sm text-gray-400">*Currently only changes the background color.</p>*/}
       <div className="flex gap-2">
         {Themes.map((theme) => (
           <Button key={theme} onClick={() => setTheme(theme)} highlight={currentTheme === theme}>
@@ -21,7 +20,8 @@ export default function Settings() {
 
       <div className="h-4" />
 
-      <h1 className="text-2xl font-bold">Set the color scheme</h1>
+      <h1 className="text-2xl font-bold">Set the color scheme*</h1>
+      <p className="text-sm text-gray-600 dark:text-gray-300">*Only applicable for the GX Background.</p>
       <div className="grid grid-cols-2 gap-2">
         {ColorSchemes.map((colorScheme, idx) => (
           <Button key={idx} onClick={() => setColorScheme(idx)} highlight={currentColorScheme === idx}>
