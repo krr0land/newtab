@@ -11,14 +11,16 @@ import Searchbar from "./Components/Searchbar";
 import LinkContainer from "./Components/LinkContainer.tsx";
 import Background from "./Components/Background.tsx";
 import WeatherWidget from "./Components/WeatherWidget.tsx";
-import { themeAtom, weatherAtom, randomPhotoAtom } from "./atoms.ts";
+import { themeAtom, weatherAtom, randomPhotoAtom, locationAtom } from "./atoms.ts";
 import { getRandomPhoto, PhotoApiResponse } from "./Utils/unsplashApi.ts";
 import { isDark } from "./Utils/colorUtil.ts";
+import { getLocationDetails, LocationApiResponse } from "./Utils/nominatimApi.ts";
 
 export default function App() {
   const setWeatherData = useSetAtom(weatherAtom);
   const [randomPhoto, setRandomPhoto] = useAtom(randomPhotoAtom);
   const [currentTheme, setCurrentTheme] = useAtom(themeAtom);
+  const setLocationAtom = useSetAtom(locationAtom);
 
   // Get the latest weather data or fetch new data
   useEffect(() => {
@@ -65,6 +67,31 @@ export default function App() {
       .then((response) => {
         setRandomPhoto(response);
         localStorage.setItem("photo", JSON.stringify(response));
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  // Get the location from the weather data
+  useEffect(() => {
+    // LOCATION
+    const locationLocalData = localStorage.getItem("location");
+    if (locationLocalData) {
+      const obj = JSON.parse(locationLocalData) as LocationApiResponse;
+      // if the data is newer than 4 hour, set it to the state
+      const date = new Date(Date.parse(obj.fetchedAt));
+      const now = new Date();
+      const diff = Math.abs(now.getTime() - date.getTime());
+      const diffHours = Math.floor(diff / (1000 * 60 * 60));
+      if (diffHours < 4) {
+        setLocationAtom(obj);
+        return;
+      }
+    }
+    // if the data is older than 1 hour or not found, fetch new data
+    getLocationDetails()
+      .then((response) => {
+        setLocationAtom(response);
+        localStorage.setItem("location", JSON.stringify(response));
       })
       .catch((error) => console.error(error));
   }, []);
