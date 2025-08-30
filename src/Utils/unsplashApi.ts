@@ -1,10 +1,8 @@
 import { createApi } from "unsplash-js";
 import { Random } from "unsplash-js/dist/methods/photos/types";
 
-const apiKey = "M010d3BvaTdGMzlGM0N6NUZOLVIzR1FrVnptVHR6RDVJd2xmaHJqTGhWaw==";
-
 const unsplash = createApi({
-  accessKey: atob(apiKey),
+  accessKey: import.meta.env.VITE_UNSPLASH_API_KEY,
 });
 
 export interface PhotoApiResponse extends Random {

@@ -50,12 +50,12 @@ export default function App() {
     const photoLocalData = localStorage.getItem("photo");
     if (photoLocalData) {
       const obj = JSON.parse(photoLocalData) as PhotoApiResponse;
-      // if the data is newer than 1 hour, set it to the state
+      // if the data is newer than 12 hours, set it to the state
       const date = new Date(Date.parse(obj.fetchedAt));
       const now = new Date();
       const diff = Math.abs(now.getTime() - date.getTime());
       const diffHours = Math.floor(diff / (1000 * 60 * 60));
-      if (diffHours < 1) {
+      if (diffHours < 12) {
         setRandomPhoto(obj);
         return;
       }

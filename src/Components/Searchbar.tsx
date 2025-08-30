@@ -12,14 +12,14 @@ export default function Searchbar() {
 
   // noinspection HtmlUnknownTarget
   return (
-    <form onSubmit={handleSearch} className="md:pt-20 text-center flex flex-row items-center gap-4 w-full max-w-4xl group">
-      <img src="g_logo.png" alt="Google Logo" className="w-[48px] grayscale-[0.75] duration-1000 ease-in-out group-focus-within:grayscale-0" />
+    <form onSubmit={handleSearch} className="md:mt-20 text-center flex flex-row items-center gap-2 w-full max-w-3xl group bg-gray-700 dark:bg-white rounded-full">
+      <img src="g_logo_tr.png" alt="Google Logo" className="w-[48px]" /> {/*grayscale-[0.75] duration-1000 ease-in-out group-focus-within:grayscale-0*/}
       <input
         type="text"
         placeholder="Search Google..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="flex-grow py-[10px] px-[16px] border-0 rounded-none box-border border-b-2 border-b-neutral-400 dark:border-b-neutral-500 outline-none h-12 bg-transparent text-xl placeholder-neutral-400 dark:placeholder-neutral-500 duration-1000 ease-in-out group-focus-within:border-b-neutral-500 group-focus-within:dark:border-b-neutral-300"
+        className="flex-grow outline-none h-12 text-xl text-white dark:text-zinc-700 placeholder-neutral-300 dark:placeholder-neutral-500"
       />
     </form>
   );
