@@ -18,7 +18,7 @@ export default function WeatherWidget() {
   dateCutoff.setMinutes(0);
 
   return (
-    <Link to={routes.WEATHER} className="md:absolute top-2 right-2 bg-gray-400/80 dark:bg-gray-800/80 p-1 pl-2 pr-3 rounded-xl backdrop-blur-xs">
+    <Link to={routes.WEATHER} className="absolute top-2 right-2 bg-gray-400/80 dark:bg-gray-800/80 p-1 pl-2 pr-3 rounded-xl backdrop-blur-xs">
       <div className="flex items-center">
         <img src={"weather/" + weatherCode.icon} alt={weatherCode.description} className="w-14" />
         <div className="w-18">
