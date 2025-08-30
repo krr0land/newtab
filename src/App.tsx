@@ -90,7 +90,7 @@ export default function App() {
   }, [randomPhoto]);
 
   return (
-    <div className="mt-20 flex flex-col justify-center items-center gap-2 w-fit m-auto box-border overflow-hidden text-zinc-700 dark:text-white">
+    <div className="flex flex-col justify-center items-center gap-2 w-fit m-auto box-border overflow-hidden text-zinc-700 dark:text-white">
       <Background />
       <NavBar />
 

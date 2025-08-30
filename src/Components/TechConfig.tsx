@@ -4,7 +4,7 @@ import { LinkIcon } from "../Utils/Icons.tsx";
 export default function TechConfig() {
   return (
     <>
-      <h1 className="text-2xl font-bold">Tech Config</h1>
+      <h1 className="mt-20 text-2xl font-bold">Tech Config</h1>
 
       <table className="border-collapse m-2 border-transparent border-8 rounded-lg backdrop-blur-sm">
         <tbody>

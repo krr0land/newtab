@@ -11,7 +11,7 @@ export default function Settings() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold">Set the theme</h1>
+      <h1 className="mt-20 text-2xl font-bold">Set the theme</h1>
       <div className="flex gap-2">
         {Themes.map((theme) => (
           <Button key={theme} onClick={() => setTheme(theme)} highlight={currentTheme === theme}>
