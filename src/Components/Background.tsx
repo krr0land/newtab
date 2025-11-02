@@ -37,6 +37,7 @@ function UnsplashBackground(props: { photo: PhotoApiResponse }) {
   return (
     <div className="fixed top-0 left-0 min-h-screen min-w-screen z-[-100]">
       <img src={url} alt={photo.alt_description || ""} />
+      <span className="w-full h-full absolute top-0 backface-hidden perspective-distant ease-out duration-70 bg-gradient-to-b from-black/10 via-black/0 to-black/10" />
     </div>
   );
 }
