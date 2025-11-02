@@ -8,7 +8,7 @@ export default function LinkContainer() {
         {linkGroups.map((linkGroup) => (
           <Tab
             className="rounded-xl first:ml-1 mr-2 px-3 py-1 text-sm/6 font-semibold focus:not-data-focus:outline-none data-focus:outline transition-colors
-            data-focus:outline-white data-hover:bg-gray-300/80 data-selected:bg-gray-400/80
+            data-focus:outline-white data-hover:bg-gray-300/80 data-selected:bg-gray-400/90
             dark:text-white dark:data-focus:outline-white dark:data-hover:bg-gray-800/60 dark:data-selected:bg-gray-800/80"
             key={linkGroup.title}
           >
@@ -39,11 +39,15 @@ function LinkGrid(props: { links: Link[] }) {
 
 function LinkElement(props: { link: Link }) {
   const link = props.link;
+  const bgColor = link.bgColor ?? "white";
+  const textColor = link.textColor ?? "#3f3f46";
 
   return (
     <a href={link.url} className="p-3 overflow-hidden block size-fit group">
-      <img src={link.icon} alt={link.title} className="w-[180px] h-[120px] m-0 p-0 object-cover border-0 rounded-xl transition-all duration-300 ease-in-out transform-style-3d group-hover:scale-105 group-hover:rotate-[-4deg]" />
-      <p className="m-0 px-0 py-1.5 font-medium dark:font-normal group-hover:font-bold">{link.title}</p>
+      <img src={link.icon} alt={link.title} className="w-[180px] h-[120px] object-cover border-0 rounded-xl transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:rounded-b-none" />
+      <p className="relative text-transparent -translate-y-8 font-medium group-hover:-translate-y-2 group-hover:opacity-100 py-1 duration-300 ease-out -z-10 rounded-xl rounded-t-none" style={{ backgroundColor: bgColor, color: textColor }}>
+        {link.title}
+      </p>
     </a>
   );
 }

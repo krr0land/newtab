@@ -7,7 +7,7 @@ export default function NavBar() {
   const currentLocation = useLocation().pathname;
   return (
     <>
-      <div className="absolute top-2 left-2 py-1 px-1 ">
+      <div className="absolute top-0 left-0 bg-gray-400/70 dark:bg-gray-800/80 py-1 px-2 rounded-br-xl backdrop-blur-xs">
         <div className="flex items-center gap-2">
           <NavBarLink to={routes.HOME} icon={HomeIcon} current={currentLocation} />
           <NavBarLink to={routes.WEATHER} icon={WeatherIcon} current={currentLocation} />
@@ -23,7 +23,11 @@ function NavBarLink(props: { to: string; icon: React.ComponentType<{ className?:
   const isActive = props.current === props.to;
   return (
     <Link to={props.to}>
-      <props.icon className={`${isActive ? "bg-gray-400/80 dark:bg-gray-800/80" : "hover:bg-gray-300/80 dark:hover:bg-gray-800/60"} fill-zinc-700 dark:fill-white w-9 h-9 p-[2px] rounded-lg`} />
+      {isActive ? (
+        <props.icon className={"fill-zinc-700 dark:fill-gray-200 w-9 h-9 p-[2px] rounded-lg"} />
+      ) : (
+        <props.icon className={"fill-gray-500 dark:fill-gray-900 hover:fill-zinc-800 dark:hover:fill-gray-400  w-9 h-9 p-[2px] rounded-lg"} />
+      )}
     </Link>
   );
 }

@@ -6,7 +6,7 @@ export default function TechConfig() {
     <>
       <h1 className="mt-20 text-2xl font-bold">Tech Config</h1>
 
-      <table className="border-collapse m-2 border-transparent border-8 rounded-lg backdrop-blur-sm">
+      <table className="border-collapse m-2 border-transparent border-8 rounded-lg backdrop-blur-sm bg-gray-200/50 dark:bg-gray-950/25">
         <tbody>
           {techConfig.map((group) => (
             <>
