@@ -36,6 +36,12 @@ const chatgpt: Link = {
   textColor: "white",
 };
 
+const notion: Link = {
+  title: "Notion",
+  url: "https://www.notion.so/8f2b20e3b59e4979808fbc0089944ad5",
+  icon: "img/notion.png",
+};
+
 // Google
 const youtube: Link = {
   title: "YouTube",
@@ -323,7 +329,7 @@ const spotify: Link = {
 export const linkGroups: LinkGroup[] = [
   {
     title: "Favorites",
-    links: [youtubeClassic, gmailClassic, spotify, protonPass, github, chatgpt],
+    links: [youtubeClassic, gmailClassic, spotify, protonPass, github, notion, chatgpt],
   },
   {
     title: "Google",
